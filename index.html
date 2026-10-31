@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>English Challenge – Unit 4</title>
+  <meta name="description" content="Examen de práctica de inglés para Pedro: 30 desafíos de la Unidad 4.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="questions.js" defer></script><script src="report.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="index.html"><span class="logo" aria-hidden="true">e<span>c</span></span> ENGLISH CHALLENGE</a><span class="badge">4.º año · Secundaria</span></header>
+  <main>
+    <section class="hero"><div><span class="eyebrow">TU PRÓXIMO DESAFÍO</span><h1>English Challenge <span>Unit 4<span class="dot">.</span></span></h1><p>Hola, Pedro. Poné a prueba lo que aprendiste.<br>Concentrate, elegí y descubrí cuánto avanzaste.</p><div class="chips"><span>30 preguntas</span><span>Sin límite de tiempo</span><span>Nota sobre 100</span></div></div><div class="hero-art" aria-hidden="true"><span class="orbit">✦</span><strong>A<span>+</span></strong><small>LET’S DO THIS!</small></div></section>
+    <section class="instructions"><span aria-hidden="true">✦</span><p>Elegí una respuesta por pregunta. Podés cambiarla antes de finalizar. Al terminar vas a ver tu nota y una explicación de cada respuesta.</p></section>
+    <section id="results" hidden tabindex="-1" aria-label="Resultado del examen"></section>
+    <div id="exam-area"><div class="progress-panel"><div><strong>Tu progreso</strong><span id="progress-text" aria-live="polite">0 de 30 respondidas</span></div><progress id="progress" value="0" max="30" aria-label="Preguntas respondidas"></progress></div>
+    <form id="exam" novalidate><div id="questions"></div><div class="finish"><p id="finish-note">Cada pregunta vale lo mismo. Las que queden sin responder cuentan como incorrectas.</p><button class="primary" type="submit">Finalizar examen <span aria-hidden="true">→</span></button></div></form></div>
+    <section id="review" hidden aria-label="Revisión del examen"></section>
+    <footer>Hecho para Pedro · Práctica original de Unit 4<br><small>Past Perfect · Relative Pronouns · Vocabulary · Reading</small></footer>
+  </main>
+  <dialog id="pending-dialog" aria-labelledby="pending-title" aria-describedby="pending-description">
+    <h2 id="pending-title">Te quedan preguntas por responder</h2>
+    <p id="pending-description"></p>
+    <div class="dialog-actions"><button id="return-to-exam" class="primary" type="button" autofocus>Volver a responder</button><button id="finish-anyway" class="secondary" type="button">Finalizar igualmente</button></div>
+  </dialog>
+</body></html>
