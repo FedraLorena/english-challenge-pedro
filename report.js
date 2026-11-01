@@ -1,11 +1,15 @@
 /* PDF A4 sin dependencias: fuentes estándar, texto WinAnsi y descarga local.
    Las líneas se miden con Courier (0,6 em) para conservar márgenes al imprimir. */
-function buildReportPdf(answers, date=new Date()) {
-  const result=grade(answers);
+function buildReportPdf(answers, date=new Date(), attempt=null) {
+  const reportQuestions=attempt?attempt.questions:questions;
+  const reportTopics=attempt?attempt.topics:TOPICS;
+  const reportPassages=attempt?attempt.passages:passages;
+  if(attempt){answers=attempt.answers;date=new Date(attempt.createdAt);}
+  const result=attempt?AttemptHistory.grade(attempt):grade(answers);
   const pages=[];
   let lines=[], y=778;
   const pdfText=text=>{
-    const extra={'’':146,'‘':145,'“':147,'”':148,'–':150,'—':151,'→':62};
+    const extra={'…':133,'’':146,'‘':145,'“':147,'”':148,'–':150,'—':151,'→':62};
     return Array.from(String(text)).map(char=>{
       let code=extra[char]??char.charCodeAt(0);
       if(code>255) code=63;
@@ -18,7 +22,7 @@ function buildReportPdf(answers, date=new Date()) {
   }
   function newPage(){
     if(lines.length) pages.push(lines);
-    const title=typeof EXAM_CONFIG!=='undefined'?EXAM_CONFIG.reportTitle:'ENGLISH CHALLENGE - UNIT 4';
+    const title=attempt?attempt.evaluation.reportTitle:typeof EXAM_CONFIG!=='undefined'?EXAM_CONFIG.reportTitle:'ENGLISH CHALLENGE - UNIT 4';
     lines=[];y=798;draw(title,11,true,'0.39 0.28 0.86');y=771;
   }
   function wrap(text){
@@ -42,26 +46,26 @@ function buildReportPdf(answers, date=new Date()) {
   block('Estudiante: Pedro | 4.º año de secundaria');
   block('Fecha: '+date.toLocaleString('es-AR',{timeZone:'America/Argentina/Buenos_Aires'}));
   block(`NOTA: ${result.score} / 100`,{bold:true,size:14,gap:13});
-  block(`Aciertos: ${result.correct} | Errores: ${result.incorrect} | Total: ${questions.length}`);
+  block(`Aciertos: ${result.correct} | Errores: ${result.incorrect} | Total: ${reportQuestions.length}`);
   block(`Sin responder: ${answers.filter(a=>a===null).length} (incluidas en errores).`);
   block('PORCENTAJE DE ACIERTOS POR TEMA',{bold:true});
   result.byTopic.forEach(t=>block(`${t.name}: ${t.percent}% (${t.correct} de ${t.total})`));
   block('Nota y porcentajes redondeados al entero más cercano. Todas las preguntas valen lo mismo.');
-  const wrong=questions.map((q,i)=>({q,i})).filter(({q,i})=>answers[i]!==q.correct);
+  const wrong=reportQuestions.map((q,i)=>({q,i})).filter(({q,i})=>answers[i]!==q.correct);
   block('PREGUNTAS INCORRECTAS Y SIN RESPONDER',{bold:true,gap:12});
   if(!wrong.length) block('¡Todas las respuestas son correctas! No hay errores para revisar.');
   wrong.forEach(({q,i})=>{
     // Mantiene cada pregunta con sus respuestas y explicación en la misma página.
-    const texts=[`Pregunta ${i+1} - ${TOPICS[q.topic]}`,q.prompt];
-    if(q.passage) texts.push('Texto de lectura: '+passages[q.passage]);
+    const texts=[`Pregunta ${i+1} - ${reportTopics[q.topic]}`,q.prompt];
+    if(q.passage) texts.push('Texto de lectura: '+reportPassages[q.passage]);
     texts.push('Tu respuesta: '+(answers[i]===null?'Sin responder':'ABCD'[answers[i]]+'. '+q.options[answers[i]]),
       'Respuesta correcta: '+'ABCD'[q.correct]+'. '+q.options[q.correct],
       'Explicación: '+q.explanation);
     const height=texts.reduce((total,text)=>total+wrap(text).length*15+7,0)+10;
     if(y-height<55) newPage();
-    block(`Pregunta ${i+1} - ${TOPICS[q.topic]}`,{bold:true});
+    block(`Pregunta ${i+1} - ${reportTopics[q.topic]}`,{bold:true});
     block(q.prompt);
-    if(q.passage) block('Texto de lectura: '+passages[q.passage]);
+    if(q.passage) block('Texto de lectura: '+reportPassages[q.passage]);
     block('Tu respuesta: '+(answers[i]===null?'Sin responder':'ABCD'[answers[i]]+'. '+q.options[answers[i]]));
     block('Respuesta correcta: '+'ABCD'[q.correct]+'. '+q.options[q.correct]);
     block('Explicación: '+q.explanation,{gap:17});
@@ -88,11 +92,11 @@ function buildReportPdf(answers, date=new Date()) {
   pdf+=`trailer\n<< /Size ${objects.length} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`;
   return Uint8Array.from(pdf,char=>char.charCodeAt(0));
 }
-function downloadReport(answers){
-  const blob=new Blob([buildReportPdf(answers)],{type:'application/pdf'});
+function downloadReport(answers,attempt=null){
+  const blob=new Blob([buildReportPdf(answers,new Date(),attempt)],{type:'application/pdf'});
   const url=URL.createObjectURL(blob);
   const anchor=document.createElement('a');
-  anchor.href=url;anchor.download=typeof EXAM_CONFIG!=='undefined'?EXAM_CONFIG.reportFilename:'English-Challenge-Unit-4-informe-Pedro.pdf';
+  anchor.href=url;anchor.download=attempt?attempt.evaluation.reportFilename:typeof EXAM_CONFIG!=='undefined'?EXAM_CONFIG.reportFilename:'English-Challenge-Unit-4-informe-Pedro.pdf';
   document.body.append(anchor);anchor.click();anchor.remove();
   setTimeout(()=>URL.revokeObjectURL(url),60000);
 }
