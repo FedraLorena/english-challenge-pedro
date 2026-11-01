@@ -18,7 +18,8 @@ function buildReportPdf(answers, date=new Date()) {
   }
   function newPage(){
     if(lines.length) pages.push(lines);
-    lines=[];y=798;draw('ENGLISH CHALLENGE - UNIT 4',11,true,'0.39 0.28 0.86');y=771;
+    const title=typeof EXAM_CONFIG!=='undefined'?EXAM_CONFIG.reportTitle:'ENGLISH CHALLENGE - UNIT 4';
+    lines=[];y=798;draw(title,11,true,'0.39 0.28 0.86');y=771;
   }
   function wrap(text){
     const output=[];let line='';
@@ -91,7 +92,7 @@ function downloadReport(answers){
   const blob=new Blob([buildReportPdf(answers)],{type:'application/pdf'});
   const url=URL.createObjectURL(blob);
   const anchor=document.createElement('a');
-  anchor.href=url;anchor.download='English-Challenge-Unit-4-informe-Pedro.pdf';
+  anchor.href=url;anchor.download=typeof EXAM_CONFIG!=='undefined'?EXAM_CONFIG.reportFilename:'English-Challenge-Unit-4-informe-Pedro.pdf';
   document.body.append(anchor);anchor.click();anchor.remove();
   setTimeout(()=>URL.revokeObjectURL(url),60000);
 }

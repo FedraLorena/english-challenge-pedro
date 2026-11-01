@@ -11,7 +11,8 @@ function make(tag, className, text) {
 }
 function addPassage(parent, key) {
   const block = make('div','passage'); block.lang='en';
-  block.append(make('h3','',key === 'lab' ? 'READING · THE SCIENCE CLUB' : 'READING · A BETTER LAMP'),make('div','',passages[key]));
+  const title=typeof EXAM_CONFIG!=='undefined' && EXAM_CONFIG.passageTitles?.[key];
+  block.append(make('h3','',title || (key === 'lab' ? 'READING · THE SCIENCE CLUB' : 'READING · A BETTER LAMP')),make('div','',passages[key]));
   parent.append(block);
 }
 function renderExam() {
@@ -106,6 +107,7 @@ function renderReview(){
   });review.hidden=false;
 }
 function reset(){
+  if(typeof prepareAttempt==='function'){prepareAttempt();renderExam();}
   finished=false;answers=Array(questions.length).fill(null);form.reset();updateProgress();
   for(const id of ['results','review']){const el=document.querySelector('#'+id);el.hidden=true;el.replaceChildren();}
   document.querySelector('#exam-area').hidden=false;
