@@ -51,6 +51,9 @@ function initLearning(){
   const storageMessage=()=>{$('learning-storage').textContent=canSave?'Tu avance se guarda en este navegador. El progreso cuenta ejercicios resueltos al menos una vez.':loaded.error||'No se pudo guardar el avance. Podés seguir practicando; no se conservará al cerrar.';};
   function persist(){if(canSave&&!PastLearning.save(state))canSave=false;storageMessage();}
   function renderNav(){
+    // El acceso existe también en HTML. Se conserva al reconstruir el menú,
+    // siempre después de la lección 2, independientemente del progreso.
+    const familiesEntry=$('verb-families-entry');
     $('lesson-nav').replaceChildren();
     lessons.forEach((lesson,i)=>{
       const count=lesson.activities.filter(e=>state.solved.includes(e.id)).length;
@@ -58,6 +61,13 @@ function initLearning(){
       b.disabled=i>PastLearning.unlocked(state);
       if(i===state.lesson)b.setAttribute('aria-current','step');
       b.append(el('small','',`${count}/${lesson.activities.length} resueltos${state.checks.includes(i)?' · ✓ Idea comprendida':b.disabled?' · Pendiente':''}`));$('lesson-nav').append(b);
+      if(i===1){
+        const link=familiesEntry||el('a','lesson-extra','Los verbos también tienen familias');
+        link.id='verb-families-entry';
+        link.href='verb-families.html';
+        if(!familiesEntry)link.append(el('small','','Complemento opcional · 12 actividades · sin nota'));
+        $('lesson-nav').append(link);
+      }
     });
     const bar=document.querySelector('#lesson-progressbar'),label=document.querySelector('#lesson-progresslabel');
     if(bar&&label){const lesson=lessons[state.lesson],count=lesson.activities.filter(e=>state.solved.includes(e.id)).length;bar.value=count+Number(state.checks.includes(state.lesson));label.textContent=`${count} de ${lesson.activities.length} actividades comprendidas · cierre ${state.checks.includes(state.lesson)?'resuelto':'pendiente'}`;}
