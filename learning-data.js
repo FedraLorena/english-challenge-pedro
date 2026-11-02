@@ -52,6 +52,59 @@ const PastLessons=(()=>{
       sequence('f20','“The cousins had finished their game before their uncle arrived.” Ordená las acciones.', ['Their uncle arrived.','The cousins finished their game.'],[1,0],'¿Qué diferencia expresa had finished frente a finished?',['Had finished significa que todavía estaban jugando.','Had finished habla del futuro.','Had finished muestra que ya habían terminado antes de la llegada.','Finished nunca se refiere al pasado.'],2,'Had finished = habían terminado, antes de otro momento pasado. Finished solo = terminaron. La relación temporal es la clave, no agregar palabras al azar.','Ubicá la llegada del tío como punto de referencia: el partido ya había terminado.')
     ]}
   ];
+  // Extensiones: se conservan los 35 ejercicios anteriores, incluidos los 20 finales.
+  const blocks=(id,prompt,tokens,correctOrder,why,hint)=>({id,type:'blocks',prompt,tokens,correctOrder,why,hint});
+  const match=(id,prompt,pairs,why,hint)=>({id,type:'match',prompt,pairs,why,hint});
+  lessons[0].rule.push('No confundas una forma con un tiempo: el participio es una forma del verbo; Simple Past y Past Perfect son tiempos. En regulares, pasado y participio suelen verse iguales: played.');
+  lessons[1].rule.push('El participio no dice por sí solo cuándo pasó algo. Gone no significa fui: para fui usamos went; para había ido, had gone. Had + participio forma la estructura completa.');
+  lessons[0].examples.push(['Last night I played the guitar.','Anoche toqué la guitarra.']);
+  lessons[1].examples.push(['I had practiced before my guitar lesson started.','Había practicado antes de que empezara mi clase de guitarra.']);
+  lessons[2].examples.push(['When the game started, I had already finished my homework.','Cuando empezó el juego, yo ya había terminado la tarea.']);
+  lessons[3].examples.push(['I had a guitar. / I had played the guitar.','Tenía una guitarra. / Había tocado la guitarra.']);
+  verbTable.push(['play','played','played'],['practice','practiced','practiced']);
+  lessons[0].activities.push(
+    {...choice('s04','Elegí una palabra: “Last night I ___ the guitar.” Usá Simple Past de play.',['playing','played','playeded','had play'],1,'Played cuenta toqué: play es regular y agrega -ed. No hace falta had para contar esta única acción terminada de anoche.','Play ya forma el pasado con una sola terminación -ed. Playing expresa otra forma y had play no es Past Perfect.'),type:'word'},
+    blocks('s05','Armá “Ayer toqué la guitarra”. Empezá con Yesterday y usá cuatro bloques.',['played','Yesterday','the guitar.','I','play','had'],[1,3,0,2],'Yesterday I played the guitar cuenta una acción terminada. Played es regular; agregar had cambiaría la estructura y no es lo que pide la traducción.','Después de Yesterday va el sujeto I, luego el verbo en Simple Past y por último qué tocaste.')
+  );
+  lessons[1].activities.push(
+    {...choice('p04','Elegí solo el participio: “Before rehearsal, I had ___ that music video.” (see)',['saw','see','seen','seeing'],2,'Seen es participio. Had seen significa había visto. Saw significa vi y no se usa después de had en esta estructura.','Mirá lo que ya está escrito: had necesita el participio, no el Simple Past.'),type:'word'},
+    blocks('p05','Armá “Yo había terminado el nivel antes de cenar”. Empezá con I y usá cinco bloques.',['the level','had','I','before dinner.','finished','finish','was'],[2,1,4,0,3],'I had finished the level before dinner: had + finished expresa había terminado. Finished es a la vez pasado y participio porque finish es regular.','La estructura buscada es sujeto + had + participio + lo que terminaste + antes de cenar.')
+  );
+  lessons[2].activities.push(
+    sequence('o04','Guardé mi partida a las 21:00. La consola dejó de funcionar a las 21:05. Tocá las acciones en orden.',['The console stopped working.','I saved my game.'],[1,0],'Ahora expresá “ya había guardado”: “When the console stopped working, I ___ my game.”',['had save','was saved','had saved','had saving'],2,'Primero guardé la partida; después falló la consola. Had saved indica que ya había guardado el progreso antes de la falla.','Fijate en las horas. La acción de las 21:00 ocurrió primero; para había guardado usá had + participio regular.'),
+    match('o05','Uní cada oración con su traducción. Tocá una tarjeta en inglés y después una en español.',[
+      {en:'I finished the song.',es:'Terminé la canción.',why:'Finished cuenta una acción terminada: terminé.'},
+      {en:'I had finished the song.',es:'Había terminado la canción.',why:'Had finished mira esa acción como anterior a otro momento pasado: había terminado.'},
+      {en:'I was at school.',es:'Estaba en el colegio.',why:'Was es el pasado de be con I: estaba. No es una acción con had + participio.'}
+    ],'Relacionaste las tres ideas: terminé, había terminado y estaba. La forma verbal cambia el significado.','Buscá la diferencia entre terminé, había terminado y estaba antes de unir las tarjetas.')
+  );
+  lessons[3].activities.push(
+    {...choice('d07','“When I was ten, I had a guitar.” ¿Qué significa had en esta oración?',['Había tocado.','Tenía.','Estaba.','Había visto.'],1,'Had a guitar significa tenía una guitarra. Después de had hay un objeto, no un participio. Was ten expresa tenía diez años con be.','No todos los had forman Past Perfect. Buscá qué palabra sigue a had.'),type:'word'},
+    match('d08','Relacioná lo que pasó en el ensayo con su traducción.',[
+      {en:'We went to rehearsal.',es:'Fuimos al ensayo.',why:'Went es Simple Past de go: fuimos.'},
+      {en:'We had gone to rehearsal.',es:'Habíamos ido al ensayo.',why:'Had + gone significa habíamos ido. Gone es participio, no Simple Past.'},
+      {en:'They were excited.',es:'Estaban entusiasmados.',why:'Were concuerda con they y describe cómo estaban.'}
+    ],'Went, had gone y were cumplen funciones distintas: acción terminada, acción anterior y estado pasado.','Revisá si la traducción habla de fuimos, habíamos ido o de cómo estaban.')
+  );
+  const intros=[
+    'Para contar una acción terminada usamos Simple Past. Si el verbo es regular, buscá la terminación -ed; si es irregular, usá su forma de pasado.',
+    'Had + participio expresa había hecho algo. En un regular el participio coincide con el pasado; en un irregular pueden ser distintos, como went y gone.',
+    'Primero reconstruí la historia. Ubicá antes y después en la línea de tiempo; recién entonces elegí la forma o la traducción.',
+    'Leé el significado completo. Terminé, había terminado, estaba y tenía no expresan lo mismo: mirá el verbo y lo que lo acompaña.',
+    'Usá las pistas de la consigna. Si hay dos acciones, ubicá primero el orden; si aparece had, fijate si le sigue un objeto o un participio.'
+  ];
+  lessons.forEach((lesson,i)=>lesson.activities.forEach(exercise=>{
+    exercise.intro=exercise.type==='blocks'?'Construí la oración tocando bloques, sin arrastrar. La traducción indica qué forma necesitás; podés quitar el último bloque o empezar de nuevo.':
+      exercise.type==='match'?'Elegí primero una tarjeta en inglés y después su significado en español. Mirá el verbo completo: una sola palabra puede cambiar de terminé a había terminado.':intros[i];
+  }));
+  const checkpoints=[
+    choice('c01','“Yesterday I played a game.” ¿Por qué usamos played?',['Todos los verbos pasados llevan -ed.','Play es regular y contamos una acción terminada.','Had siempre va antes de played.','Played nunca puede ser pasado.'],1,'Play es regular y aquí played es Simple Past. Los irregulares, como go → went, no siguen esa terminación.','La razón tiene que incluir el tipo de verbo y el significado de ayer; no todos los verbos llevan -ed.'),
+    choice('c02','Querés decir “había ido”. ¿Qué necesitás y por qué?',['Went, porque es participio.','Had go, porque no cambia el verbo.','Had gone, porque had necesita el participio.','Gone solo, porque siempre significa fui.'],2,'Had gone une el auxiliar con el participio. Went es el pasado simple y gone es una forma que necesita esa estructura para expresar había ido.','Diferenciá Simple Past (went) del participio (gone).'),
+    choice('c03','“When the concert began, we had already found our seats.” ¿Cómo razonás el orden?',['Primero encontramos los asientos; después comenzó el recital.','Primero comenzó el recital; luego buscamos asientos.','Already significa mañana.','Had found dice que nunca encontramos lugar.'],0,'Had already found muestra que los asientos ya estaban encontrados antes del comienzo del recital. Already significa ya.','Usá el comienzo del recital como referencia: algo ya había ocurrido antes.'),
+    choice('c04','¿Qué comparación está bien explicada?',['Had a guitar y had played significan exactamente lo mismo.','Was y were siempre forman Past Perfect.','Had went es otra forma de had gone.','Had a guitar expresa posesión; had played expresa una acción anterior.'],3,'Had + objeto puede significar tenía. Had + participio forma Past Perfect. La palabra que sigue a had es una pista importante.','No mires had aislado: mirá si aparece un objeto o una forma verbal en participio.'),
+    choice('c05','“I had finished the level before my friend arrived.” ¿Cuál es la idea central?',['Mi amigo llegó y después terminé.','Ya había terminado el nivel cuando llegó mi amigo.','Todavía estoy jugando ese nivel.','Had finished y will finish hablan del mismo tiempo.'],1,'La llegada es el punto de referencia pasado. El nivel ya estaba terminado antes: had + finished.','Buscá qué acción ya estaba completa antes de la llegada.')
+  ];
+  lessons.forEach((lesson,i)=>{lesson.checkpoint=checkpoints[i];});
   return {lessons,verbTable};
 })();
 if(typeof module!=='undefined')module.exports={PastLessons};
