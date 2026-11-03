@@ -1,0 +1,28 @@
+/* Ilustraciones locales SVG. No hay imágenes remotas ni formas inglesas de respuesta. */
+const FirstEventArt=(()=>{
+  const person='<circle cx="29" cy="33" r="10" fill="#f1c49e"/><path d="M15 85V60q14-17 28 0v25" fill="#b8c9f1"/><path d="M20 86v24m18-24v24"/>';
+  const icons={
+    guitar:'<path d="M106 17l10 9-41 47c11 17 3 35-15 40-20 5-42-11-36-31 2-9 10-15 21-17l48-45z" fill="#e7b76a"/><circle cx="56" cy="88" r="11" fill="#503929"/><path d="M49 96l61-72m-66 68 61-72m-65 66 60-70" stroke-width="1.2"/><path d="M96 18l19 16m-6-16 9 7"/>',
+    phone:'<rect x="45" y="12" width="60" height="108" rx="10" fill="#b8c9f1"/><rect x="51" y="25" width="48" height="75" rx="3" fill="white"/><path d="M66 43l23 19-23 19z" fill="#5b419f"/><circle cx="75" cy="110" r="3" fill="#343e60"/>',
+    notebook:'<rect x="38" y="19" width="83" height="99" rx="5" fill="#fff3ce"/><path d="M47 19v99m14-78h47M61 55h47M61 70h30M61 85h39"/><path d="M30 32h13m-13 19h13m-13 19h13m-13 19h13m-13 19h13"/><path d="M107 94l20-21 6 6-21 21-10 4z" fill="#c89b5e"/>',
+    backpack:'<path d="M54 29v-8q20-15 39 0v8" fill="none"/><rect x="36" y="28" width="80" height="91" rx="23" fill="#9bcbb1"/><rect x="48" y="71" width="56" height="37" rx="9" fill="#e9f5ef"/><path d="M48 82h56M37 45l-12 9v46h12m79-55 12 9v46h-12"/>',
+    game:'<rect x="26" y="18" width="100" height="63" rx="5" fill="#b8c9f1"/><path d="M67 82v12m-17 0h50"/><path d="M43 105q-4-20 13-23h43q17 3 13 23l-4 14q-3 9-13-6H60q-13 15-16 6z" fill="#eee7ff"/><path d="M58 94v17m-8-8h16"/><circle cx="95" cy="98" r="3" fill="#5133a5"/><circle cx="104" cy="106" r="3" fill="#5133a5"/><rect x="66" y="34" width="24" height="29" rx="2" fill="#fff"/><path d="M71 34v10h15m-15 8h14"/>',
+    power:'<path d="M81 9L43 71h30l-9 51 44-66H78z" fill="#e8bc4e"/><path d="M23 25l13 12m89 54 11 14M21 100l14-7"/><path d="M110 20l17 0m-8-8v17"/>',
+    food:'<ellipse cx="77" cy="99" rx="58" ry="14" fill="#d8e5f4"/><path d="M36 84V47q0-25 20-25h39q23 0 23 24v38z" fill="#d99e50"/><path d="M45 76V48q0-14 14-14h31q18 0 18 15v27z" fill="#ffe1a6"/><path d="M53 57l13 5m11-13 12 6m-18 17 18-3"/>',
+    meal:'<ellipse cx="77" cy="91" rx="49" ry="27" fill="#e7edf8"/><ellipse cx="77" cy="88" rx="34" ry="17" fill="#e3b97c"/><path d="M18 39v73m-7-73v22h14V39m112 0v73m0-73q-15 22 0 30"/><circle cx="70" cy="83" r="9" fill="#87b99e"/><circle cx="91" cy="88" r="8" fill="#cc7b5b"/>',
+    bus:'<rect x="19" y="31" width="116" height="68" rx="12" fill="#edc868"/><rect x="28" y="40" width="24" height="27" fill="#e9f5ff"/><rect x="57" y="40" width="24" height="27" fill="#e9f5ff"/><rect x="88" y="40" width="34" height="49" fill="#e9f5ff"/><path d="M19 76h68m21-36v49"/><circle cx="43" cy="101" r="12" fill="#343e60"/><circle cx="111" cy="101" r="12" fill="#343e60"/><circle cx="43" cy="101" r="4" fill="white"/><circle cx="111" cy="101" r="4" fill="white"/>',
+    boarding:'<rect x="68" y="25" width="70" height="75" rx="8" fill="#edc868"/><rect x="91" y="35" width="26" height="65" fill="#e9f5ff"/><path d="M91 85h26m-26 8h26"/>'+person+'<path d="M45 72h36l-9-8m9 8-9 8"/>',
+    door:'<path d="M47 117V18h77v99" fill="#e4edf7"/><path d="M47 18l51 14v85l-51-1z" fill="#d3b08c"/><circle cx="85" cy="75" r="3" fill="#343e60"/><path d="M25 118h113M19 66h20m-6-7 7 7-7 7"/>',
+    library:'<rect x="31" y="20" width="99" height="98" rx="4" fill="#ead9be"/><path d="M31 66h99m-99 44h99"/><path d="M40 27h16v32H40zm20 4h14v28H60zm19-5h15v33H79zm22 8h18v25h-18z" fill="#b8c9f1"/><path d="M40 75h19v27H40zm24-2h13v29H64zm19 6h15v23H83zm21-8h16v31h-16z" fill="#9bcbb1"/>',
+    plates:'<path d="M15 89h127M24 89v28m109-28v28"/><ellipse cx="79" cy="75" rx="43" ry="12" fill="#d8e5f4"/><path d="M36 75v9q44 22 86 0v-9" fill="#eef4ff"/><ellipse cx="79" cy="69" rx="35" ry="9" fill="#fff"/>',
+    map:'<path d="M18 35l40-14 39 14 37-14v87l-37 13-39-14-40 13z" fill="#e3f2df"/><path d="M58 21v86m39-72v86M29 88l19-30 29 20 18-26 27 9" stroke="#4f7eac" stroke-dasharray="5 3" fill="none"/><circle cx="121" cy="60" r="5" fill="#a94b4b"/>',
+    giftbook:'<rect x="52" y="41" width="79" height="65" rx="3" fill="#c4d7f0"/><path d="M90 41v65M52 61h79" stroke="#7751ae" stroke-width="7"/><path d="M90 42q-30-30-33-8 3 15 33 8 31-30 32-8-1 15-32 8" fill="#eee7ff"/>'+person,
+    broken:'<rect x="29" y="17" width="99" height="96" fill="#d0e8f6"/><path d="M78 17v96m-49-48h99M49 33l23 26-10 17 28 20m-18-37 24-21m-34 38-24 9"/><path d="M18 120h125"/>',
+    camera:'<rect x="27" y="44" width="104" height="67" rx="9" fill="#b8c9f1"/><path d="M49 44l11-17h38l12 17" fill="#b8c9f1"/><circle cx="79" cy="78" r="24" fill="#fff"/><circle cx="79" cy="78" r="14" fill="#a8d4cf"/><rect x="111" y="52" width="12" height="9" fill="#fff"/>',
+    posterfall:'<path d="M21 119h119"/><g transform="rotate(24 81 67)"><rect x="45" y="17" width="72" height="95" fill="#fff3ce"/><path d="M56 35h50m-50 12h34M56 85l13-23 16 12 17-16"/></g><path d="M21 33l13 19m99 2-5 19" stroke-dasharray="4 4"/>',
+    plant:'<path d="M42 87h72l-11 34H53z" fill="#c99068"/><path d="M78 88V28m0 37q-45 0-39-31 33 0 39 31m0-12q43 0 37-29-29 0-37 29" fill="#8bc3a4"/>',
+    poster:'<rect x="35" y="15" width="88" height="107" fill="#fff3ce"/><path d="M46 32h66m-66 12h44m-15 60V61m0 26q-25-2-24-21 22 0 24 21m0-10q26-1 25-19-22 1-25 19" fill="#9bcbb1"/>'
+  };
+  return {icons,svg:icon=>'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 154 136" aria-hidden="true" focusable="false" fill="none" stroke="#283650" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round">'+(icons[icon]||icons.notebook)+'</svg>'};
+})();
+if(typeof module!=='undefined')module.exports={FirstEventArt};
