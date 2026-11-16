@@ -1,0 +1,20 @@
+.click { --click-accent:#4d32b3; }
+.click-nav,.click-buttons { display:flex; flex-wrap:wrap; gap:10px; margin-block:14px; }
+.click [aria-pressed="true"] { background:var(--click-accent); color:white; }
+.click .question > button { margin:8px 8px 0 0; }
+.click button:disabled { opacity:.55; cursor:default; }
+.click-picture { margin:18px 0; padding:16px; background:#eae1ff; border-radius:18px; display:grid; justify-items:center; gap:10px; color:#362275; text-align:center; font-weight:750; }
+.click-drawing { display:block; position:relative; height:52px; width:115px; border:3px solid currentColor; border-radius:16px; background:#fff; }
+.click-picture-0 .click-drawing { border-radius:50%; box-shadow:-32px 25px 0 -19px currentColor,-46px 38px 0 -23px currentColor; }
+.click-picture-1,.click-picture-5 { background:#dff4ed; }
+.click-picture-1 .click-drawing,.click-picture-4 .click-drawing,.click-picture-5 .click-drawing { border-radius:28px; height:12px; margin-block:20px; }
+.click-picture-1 .click-drawing::after,.click-picture-4 .click-drawing::after,.click-picture-5 .click-drawing::after { content:""; position:absolute; width:19px; height:19px; border-radius:50%; background:currentColor; left:48%; top:-6px; }
+.click-picture-4 .click-drawing::after { left:80%; }
+.click-picture-2,.click-picture-3 { background:#fff0c8; }
+.click-picture-2 .click-drawing { border-style:dashed; background:linear-gradient(90deg,white 65%,#eae1ff 65%); }
+.click-picture-3 .click-drawing,.click-picture-6 .click-drawing { background:repeating-linear-gradient(#fff 0 10px,#e3d8fa 10px 13px); border-radius:6px; }
+.click-bridge { width:100%; border-collapse:collapse; }
+.click-bridge th,.click-bridge td { padding:10px; text-align:left; border-bottom:1px solid #d3c8ed; }
+.click-comparisons { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr)); gap:10px; }
+.click-output { min-height:45px; background:#f1ebff; padding:10px; border-radius:10px; }
+@media(max-width:480px) { .click-buttons button { flex:1 1 auto; } .click-bridge { font-size:.9rem; } }
