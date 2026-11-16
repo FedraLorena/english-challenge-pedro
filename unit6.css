@@ -1,0 +1,57 @@
+.unit6 > section { margin-block: 24px; scroll-margin-top: 16px; }
+.unit6 .hero { grid-template-columns: 1fr; }
+.unit6 .question { margin-block: 16px; }
+.unit6 .question h3 { margin-top: 0; }
+.unit6 summary { cursor: pointer; font-weight: 750; padding-block: 12px; }
+.unit6 .unit6-choices { display: grid; gap: 8px; }
+.unit6 .unit6-choices button { width: 100%; text-align: left; }
+.unit6 button, .unit6-checklist label { min-height: 44px; }
+.unit6 textarea { display: block; width: 100%; box-sizing: border-box; padding: 12px; font: inherit; border: 1px solid currentColor; border-radius: 10px; }
+.unit6 li { margin-block: 8px; }
+.unit6-checklist label { display: flex; align-items: center; gap: 10px; }
+.unit6-checklist input { flex: 0 0 auto; }
+.unit6 select { display: block; max-width: 100%; min-height: 44px; padding: 8px; margin: 8px 0; font: inherit; }
+.unit6 .unit6-passage { white-space: pre-line; border-inline-start: 4px solid currentColor; padding-inline-start: 14px; }
+.unit6 .unit6-glossary { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 8px 20px; }
+.unit6 .unit6-glossary div { border-bottom: 1px solid #d5dbea; padding-block: 6px; }
+.unit6 dd { margin-inline-start: 0; }
+.unit6 dt { font-weight: 700; }
+.unit6 .unit6-choices button[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--purple); background: #eee9ff; }
+.unit6 article p, .unit6 article li, .unit6 #writing li { line-height: 1.65; }
+.unit6-map { display:flex; flex-wrap:wrap; gap:8px; }
+.unit6-map button { flex:1 1 155px; }
+.unit6-map [aria-pressed="true"] { background:var(--purple); color:white; }
+.unit6 .unit6-mission { border:2px solid #d9cef9; border-top:6px solid var(--purple); }
+.unit6-mission h4 { color:#4b30bc; font-size:1.22rem; margin:0 0 18px; }
+.unit6 .unit6-scene { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; padding:0; list-style:none; }
+.unit6 .unit6-scene li { display:grid; place-content:center; text-align:center; min-height:120px; padding:12px; margin:0; background:#eee7ff; border-radius:14px; }
+.unit6 .unit6-scene li:nth-child(2) { background:#dcf7eb; }
+.unit6 .unit6-scene li:nth-child(3) { background:#fff0c9; }
+.unit6-scene span { font-size:2rem; }
+.unit6-actions { margin-top:18px; }
+@media(max-width:480px) {
+  .unit6 .unit6-scene { grid-template-columns:1fr; }
+  .unit6 .unit6-scene li { min-height:68px; grid-auto-flow:column; align-items:center; gap:12px; }
+}
+.unit6-map { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr)); gap:14px; }
+.unit6-card { display:flex; flex-direction:column; align-items:flex-start; padding:18px; border:1px solid #d9cef9; border-radius:16px; background:#fff; }
+#grammar .unit6-card { border-top:4px solid #6347dc; }
+#vocabulary .unit6-card { border-top:4px solid #248560; }
+#reading .unit6-card { border-top:4px solid #ad7417; }
+.unit6-card h3 { margin:10px 0 0; }
+.unit6-card p { margin:8px 0 16px; }
+.unit6-card button { width:100%; margin-top:auto; }
+.unit6-card-icon { display:grid; place-items:center; width:52px; height:52px; background:#f1ebff; border-radius:14px; font-size:1.6rem; }
+.unit6-status { color:#4b3a91; font-weight:650; font-size:.88rem; }
+#unit6-board section, #unit6-extra { margin-block:26px; }
+.unit6:has(#unit6-board[hidden]) > .hero { display:none; }
+.unit6-mission progress { margin-bottom:18px; }
+.unit6-clues, .unit6-blocks { display:flex; flex-wrap:wrap; gap:8px; margin-block:12px; }
+.unit6-clues button { text-align:left; }
+.unit6-clues [aria-pressed="true"] { background:#dcf7eb; box-shadow:inset 0 0 0 2px var(--green); }
+.unit6-blocks button:disabled { opacity:.45; cursor:default; }
+.unit6-reward { background:#dcf7eb; padding:12px; border-radius:12px; }
+@media(max-width:480px) {
+  .unit6-actions > button { flex:1 1 130px; }
+  .unit6-clues > button { width:100%; }
+}

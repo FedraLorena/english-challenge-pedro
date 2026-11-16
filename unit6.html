@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unit 6 — Refuerzo y práctica · English Challenge</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="unit6.css">
+  <script src="unit6-data.js" defer></script>
+  <script src="unit6.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="index.html"><span class="logo" aria-hidden="true">ec</span> ENGLISH CHALLENGE</a><span class="badge">4.º año · Secundaria</span></header>
+  <main class="unit6">
+    <section class="hero"><div><span class="eyebrow">INGLÉS · 4.º AÑO</span><h1>Unit 6 <span>Refuerzo y práctica<span class="dot">.</span></span></h1><p>Elegí una misión, explorá la escena y resolvé un desafío por vez.</p></div></section>
+    <div id="unit6-board">
+      <h2 id="board-title" tabindex="-1">Tablero de misiones</h2>
+      <p id="board-progress" role="status"></p>
+      <p>El avance de las misiones se guarda en este navegador y dispositivo.</p>
+    <section id="grammar" aria-labelledby="grammar-title"><h2 id="grammar-title">Grammar · Future tenses</h2></section>
+    <section id="vocabulary" aria-labelledby="vocabulary-title"><h2 id="vocabulary-title">Vocabulary · Travelling</h2></section>
+    <section id="reading" aria-labelledby="reading-title"><h2 id="reading-title">Reading comprehension</h2></section>
+      <div id="unit6-extra" class="unit6-map"></div>
+    </div>
+    <div id="unit6-play" hidden>
+      <button id="unit6-return" class="secondary" type="button">← Volver a misiones</button>
+      <article id="unit6-mission" class="question unit6-mission" hidden></article>
+    </div>
+    <section hidden id="writing" class="question" aria-labelledby="writing-title">
+      <h2 id="writing-title">Writing · Opinion essay</h2>
+      <h3>Paso 1 de 5 · Mirá</h3><ol class="unit6-scene"><li><span aria-hidden="true">💬</span><strong>Tomá postura</strong></li><li><span aria-hidden="true">🧩</span><strong>Dos razones y una objeción</strong></li><li><span aria-hidden="true">🏁</span><strong>Cerrá tu idea</strong></li></ol><details><summary>Paso 2 de 5 · Entendé</summary><p>Un texto de opinión presenta tu postura y la justifica con razones. Cada párrafo cumple una función. Usá un ejemplo concreto para explicar cada razón.</p>
+      </details><details><summary>Paso 3 de 5 · Mirá cómo se resuelve</summary><p><strong>Modelo.</strong> ¿Debería el colegio organizar más viajes cortos?</p>
+      <ol>
+        <li><strong>Introducción.</strong> Presentá el tema y da tu postura. <span lang="en">In my opinion, schools should organise more short trips.</span> En mi opinión, los colegios deberían organizar más viajes cortos.</li>
+        <li><strong>Primer argumento.</strong> Explicá una ventaja y da un ejemplo. <span lang="en">Firstly, students can learn outside the classroom. For example, they can see real fossils at a museum.</span> Primero, pueden aprender fuera del aula. Por ejemplo, pueden ver fósiles reales en un museo.</li>
+        <li><strong>Segundo argumento.</strong> Sumá otra razón. <span lang="en">Moreover, short trips give students a chance to work together.</span> Además, los viajes cortos les dan una oportunidad de trabajar juntos.</li>
+        <li><strong>Opinión contraria.</strong> Presentá una objeción y respondela. <span lang="en">Some people argue that trips are expensive. However, local visits can cost very little.</span> Algunas personas sostienen que los viajes son caros. Sin embargo, las visitas locales pueden costar muy poco.</li>
+        <li><strong>Conclusión.</strong> Retomá tu postura a partir de las razones anteriores. <span lang="en">In conclusion, short trips are a good way to learn together.</span> En conclusión, son una buena manera de aprender juntos.</li>
+      </ol>
+      </details><details><summary>Paso 4 de 5 · Jugá con tus ideas</summary><p><strong>Tu turno.</strong> <span lang="en">Should students travel to school by public transport?</span> ¿Deberían los estudiantes viajar al colegio en transporte público? Anotá primero tu postura, dos razones distintas, un ejemplo para cada una y una objeción. Después armá los cinco párrafos.</p>
+      <label for="unit6-draft"><strong>Tu borrador en inglés</strong></label>
+      <textarea id="unit6-draft" lang="en" rows="10" spellcheck="true"></textarea>
+      <p>El borrador queda disponible mientras esta página siga abierta. Copialo si querés conservarlo.</p>
+      </details><details><summary>Paso 5 de 5 · Descubrí por qué</summary><p>Si falta una razón, preguntate qué ejemplo convencería a alguien que piensa distinto. Volvé al borrador y probá otra versión.</p><fieldset class="unit6-checklist"><legend>Revisá tu texto</legend>
+        <label><input type="checkbox"> Presenté el tema y se entiende mi postura.</label>
+        <label><input type="checkbox"> Expliqué dos razones distintas con ejemplos.</label>
+        <label><input type="checkbox"> Incluí una opinión contraria y respondí con una razón.</label>
+        <label><input type="checkbox"> Usé conectores y cerré retomando mi postura.</label>
+        <label><input type="checkbox"> Releí cada oración y revisé verbos, mayúsculas y puntuación.</label>
+      </fieldset>
+      <p>Esta lista es para autoevaluarte. El borrador se revisa a mano.</p></details>
+    </section>
+    <section hidden id="mock" aria-labelledby="mock-title">
+      <h2 id="mock-title">Simulacro integrador</h2>
+      <p>12 preguntas de Grammar, Vocabulary y Reading. Cada intento cambia la selección y el orden. Vas a ver la corrección al finalizar. La escritura se practica en <button id="mock-writing" type="button" class="secondary">Ir a Writing</button>.</p>
+      <button id="unit6-start" class="primary" type="button">Empezar simulacro</button>
+      <p id="unit6-score" tabindex="-1" aria-live="polite"></p>
+      <div id="unit6-exam"></div>
+    </section>
+    <footer>English Challenge · Unit 6</footer>
+  </main>
+</body>
+</html>
+
