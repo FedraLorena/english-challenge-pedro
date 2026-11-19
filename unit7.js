@@ -208,6 +208,7 @@
       const control=button(answer,()=>{
         feedback.hidden=false;
         const correct=answer===card.answer;
+        feedback.setAttribute('data-correct',String(correct));
         feedback.textContent=(correct?'¡Excelente, Pedro! ':'Casi. ')+card.why+(correct?'':' Volvé a elegir.');
         next.disabled=!correct;
         for(const other of options.children) other.setAttribute('aria-pressed',String(other===control));
@@ -336,6 +337,7 @@
     const check=button('Comprobar',()=>{
       if(!chosen) return;
       status.hidden=false;
+      status.setAttribute('data-correct',String(chosen===question.answer));
       status.textContent=(chosen===question.answer?'¡Esa estructura está perfecta! ':'Casi. Revisemos la idea. ')+question.why;
       next.disabled=chosen!==question.answer;
     },'primary');
@@ -439,6 +441,7 @@
     const percent=correct/run.ids.length*100;
     frame(percent>=80?'¡Misión cumplida! 🚀':'Una nueva oportunidad para comprender',run.kind==='final'?'Resultado final':'Resultado de la mini evaluación');
     const score=el('div','','u7-result');
+    score.setAttribute('data-completed',String(percent>=80));
     score.append(el('strong',run.kind==='final'?(percent/10).toFixed(1)+'/10':Math.round(percent)+' %'),el('p',correct+' aciertos · '+(run.ids.length-correct)+' errores · '+Math.round(percent)+' %'));
     content.append(score,el('p','Cada intento es una oportunidad de aprender. Para completar esta misión necesitás al menos el 80 %.'));
     for(const mission of unit7Missions) {
@@ -511,6 +514,7 @@
     const options=el('div','','u7-options');
     shuffle([q.answer,...q.wrong]).forEach(value=>options.append(button(value,()=>{
       feedback.hidden=false;
+      feedback.setAttribute('data-correct',String(value===q.answer));
       feedback.textContent=(value===q.answer?'¡Excelente, Pedro! ':'Buscá esta pista. ')+q.why;
       next.disabled=value!==q.answer;
     })));
@@ -554,6 +558,7 @@
       const check=button('Comprobar',()=>{
         const correct=output.textContent===parts.join(' ');
         feedback.hidden=false;
+        feedback.setAttribute('data-correct',String(correct));
         feedback.textContent=(correct?'¡Bien! ':'Probá de nuevo. ')+why;
         next.disabled=!correct;
       },'primary');
